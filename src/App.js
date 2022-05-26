@@ -1,7 +1,13 @@
-import { AppRouter } from "./routes/AppRouter";
+import GlobalStyle from './globalStyles';
+import {AppRouter} from './routes/AppRouter';
 
 function App() {
-  return <AppRouter/>;
+  return (
+    <>
+      <GlobalStyle />
+      <AppRouter />
+    </>
+  );
 }
 
 export default App;

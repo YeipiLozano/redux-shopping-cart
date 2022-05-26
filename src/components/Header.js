@@ -9,7 +9,7 @@ export const Header = () => {
   return (
     <Bar className="topnav" id="myTopnav">
       <Links to="/">
-        Home
+        Wizestore
       </Links>
       <FlexContainer>
               <Links to="/cart">Cart</Links>
