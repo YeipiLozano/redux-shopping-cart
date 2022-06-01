@@ -1,10 +1,10 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import {Products} from '../pages/products';
-import {Cart} from '../pages/cart';
-import {Home} from '../pages/home';
-import {Header} from '../components/header';
-import {Login} from '../pages/login';
+import Cart from '../pages/cart';
+import Home from '../pages/home';
+import Header from '../components/header';
+import Login from '../pages/login';
+import Products from '../pages/products/';
 
 export const AppRouter = () => {
   return (
@@ -16,7 +16,7 @@ export const AppRouter = () => {
             <Home />
           </Route>
           <Route path='/products'>
-            <Products />
+            <Products/>
           </Route>
           <Route path='/cart'>
             <Cart />
