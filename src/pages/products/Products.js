@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
-import {ProductsContainer} from './Products.styles';
+import {
+  GridContainer,
+  ProductsContainer,
+  TagsContainer,
+} from './Products.styles';
 import Card from '../../components/card';
+import Checkbox from '../../components/checkbox';
 
 const Products = () => {
   const [products] = useState([
@@ -167,16 +172,28 @@ const Products = () => {
   ]);
   return (
     <ProductsContainer>
-      {products.map(({productName, price, department}) => (
-        <Card
-          key={productName}
-          productName={productName}
-          price={price}
-          department={department}
-        />
-      ))}
+      <div>
+        <TagsContainer>
+          <h2>Categorías</h2>
+          <Checkbox label='Value 1' />
+          <Checkbox label='Value 2' />
+          <Checkbox label='Value 3' />
+          <Checkbox label='Value 4' />
+          <Checkbox label='Value 5' />
+        </TagsContainer>
+      </div>
+      <GridContainer>
+        {products.map(({productName, price, department}) => (
+          <Card
+            key={productName}
+            productName={productName}
+            price={price}
+            department={department}
+          />
+        ))}
+      </GridContainer>
     </ProductsContainer>
   );
 };
 
-export default Products
+export default Products;
