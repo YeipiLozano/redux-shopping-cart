@@ -17,6 +17,12 @@ const GlobalStyle = createGlobalStyle`
     display:flex;
     justify-content:center;
   }
+  hr{
+    width:95%;
+    height: 1px;
+    background-color: #D3D3D4;
+    border: none;
+  }
 
 `;
 
