@@ -1,6 +1,6 @@
 import React from 'react';
 import CartTable from '../../components/table/';
-import {CartContainer, CheckoutContainer, ItemsContainer} from './Cart.styles';
+import { CartContainer, CheckoutCard, CheckoutContainer, ItemsContainer, CheckoutTitle } from './Cart.styles';
 
 const Cart = () => {
   return (
@@ -11,8 +11,8 @@ const Cart = () => {
         <CartTable />
       </ItemsContainer>
       <CheckoutContainer>
-        <div>
-          <h3>Summary</h3>
+        <CheckoutCard>
+          <CheckoutTitle>Summary</CheckoutTitle>
           <hr />
           <div>
             <p>Items 3</p>
@@ -24,7 +24,7 @@ const Cart = () => {
             <p>Items $550.00USD</p>
           </div>
           <button>Checkout</button>
-        </div>
+        </CheckoutCard>
       </CheckoutContainer>
     </CartContainer>
   );

@@ -2,7 +2,8 @@ import React from 'react';
 import {
   DetailsContainer,
   DetailsTextContainer,
-  QuantityContainer
+  QuantityContainer,
+  SpacedTd,
 } from './CartTable.styles';
 import {Text} from '../../styles/shared/Text';
 
@@ -19,7 +20,7 @@ const CartTable = () => {
       </thead>
       <tbody>
         <tr>
-          <td>
+          <SpacedTd style={{padding: '16px'}}>
             <DetailsContainer>
               <img src='https://via.placeholder.com/150x150' alt='Producto' />
               <DetailsTextContainer>
@@ -29,18 +30,18 @@ const CartTable = () => {
                 <Text>Product code 111000</Text>
               </DetailsTextContainer>
             </DetailsContainer>
-          </td>
-          <td>
+          </SpacedTd>
+          <SpacedTd>
             <QuantityContainer>
               <input defaultValue='2' type='number' />
               <button>Remove</button>
             </QuantityContainer>
-          </td>
-          <td>$35.00</td>
-          <td>$70.00</td>
+          </SpacedTd>
+          <SpacedTd>$35.00</SpacedTd>
+          <SpacedTd>$70.00</SpacedTd>
         </tr>
         <tr>
-          <td>
+          <SpacedTd>
             <DetailsContainer>
               <img src='https://via.placeholder.com/150x150' alt='Producto' />
               <DetailsTextContainer>
@@ -50,18 +51,18 @@ const CartTable = () => {
                 <Text>Product code 111000</Text>
               </DetailsTextContainer>
             </DetailsContainer>
-          </td>
-          <td>
+          </SpacedTd>
+          <SpacedTd>
             <QuantityContainer>
               <input defaultValue='2' type='number' />
               <button>Remove</button>
             </QuantityContainer>
-          </td>
-          <td>$35.00</td>
-          <td>$70.00</td>
+          </SpacedTd>
+          <SpacedTd>$35.00</SpacedTd>
+          <SpacedTd>$70.00</SpacedTd>
         </tr>
         <tr>
-          <td>
+          <SpacedTd>
             <DetailsContainer>
               <img src='https://via.placeholder.com/150x150' alt='Producto' />
               <DetailsTextContainer>
@@ -71,18 +72,18 @@ const CartTable = () => {
                 <Text>Product code 111000</Text>
               </DetailsTextContainer>
             </DetailsContainer>
-          </td>
-          <td>
+          </SpacedTd>
+          <SpacedTd>
             <QuantityContainer>
               <input defaultValue='2' type='number' />
               <button>Remove</button>
             </QuantityContainer>
-          </td>
-          <td>$35.00</td>
-          <td>$70.00</td>
+          </SpacedTd>
+          <SpacedTd>$35.00</SpacedTd>
+          <SpacedTd>$70.00</SpacedTd>
         </tr>
         <tr>
-          <td>
+          <SpacedTd>
             <DetailsContainer>
               <img src='https://via.placeholder.com/150x150' alt='Producto' />
               <DetailsTextContainer>
@@ -92,17 +93,16 @@ const CartTable = () => {
                 <Text>Product code 111000</Text>
               </DetailsTextContainer>
             </DetailsContainer>
-          </td>
-          <td>
+          </SpacedTd>
+          <SpacedTd>
             <QuantityContainer>
               <input defaultValue='2' type='number' />
               <button>Remove</button>
             </QuantityContainer>
-          </td>
-          <td>$35.00</td>
-          <td>$70.00</td>
+          </SpacedTd>
+          <SpacedTd>$35.00</SpacedTd>
+          <SpacedTd>$70.00</SpacedTd>
         </tr>
-
       </tbody>
     </table>
   );
