@@ -1,6 +1,7 @@
 import React from 'react';
 import CartTable from '../../components/table/';
 import { CartContainer, CheckoutCard, CheckoutContainer, ItemsContainer, CheckoutTitle } from './Cart.styles';
+import { Button } from '../../styles/shared/Button';
 
 const Cart = () => {
   return (
@@ -23,7 +24,7 @@ const Cart = () => {
             <p>Total Cost</p>
             <p>Items $550.00USD</p>
           </div>
-          <button>Checkout</button>
+          <Button>Checkout</Button>
         </CheckoutCard>
       </CheckoutContainer>
     </CartContainer>
