@@ -4,18 +4,25 @@ import {
   CardContainer,
   Content,
   Department,
+  ImgDiv,
   ProductName,
   ProductPrice,
 } from './Card.styles';
 
-const Card = ({productName, price, department}) => (
+const Card = ({productName, price, department, image}) => (
   <CardContainer>
-    <img src='https://via.placeholder.com/150x150' alt={productName} />
+    <ImgDiv>
+      <img
+        style={{maxWidth: '100%', maxHeight:'100%'}}
+        src={image}
+        alt={productName}
+      />
+    </ImgDiv>
     <Content>
       <ProductName>{productName}</ProductName>
       <Department>{department}</Department>
       <ProductPrice>${price}</ProductPrice>
-      <Button>Agregar al carrito</Button>
+      <Button>Add to cart</Button>
     </Content>
   </CardContainer>
 );
