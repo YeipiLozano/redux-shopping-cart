@@ -6,8 +6,9 @@ export const DetailsContainer = styled(Container)`
 `;
 
 export const DetailsTextContainer = styled(Container)`
-margin-left: 32px;
+  margin-left: 32px;
   flex-direction: column;
+  max-width: 300px;
 `;
 
 export const QuantityContainer = styled(Container)`
@@ -18,4 +19,10 @@ export const QuantityContainer = styled(Container)`
 
 export const SpacedTd = styled.td`
   padding: 16px;
+`;
+
+export const ImgDiv = styled.div`
+  max-width: 150px;
+  display: flex;
+  justify-content: center;
 `;

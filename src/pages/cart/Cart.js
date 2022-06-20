@@ -1,9 +1,19 @@
 import React from 'react';
 import CartTable from '../../components/table/';
-import { CartContainer, CheckoutCard, CheckoutContainer, ItemsContainer, CheckoutTitle } from './Cart.styles';
-import { Button } from '../../styles/shared/Button';
+import {
+  CartContainer,
+  CheckoutCard,
+  CheckoutContainer,
+  ItemsContainer,
+  CheckoutTitle,
+} from './Cart.styles';
+import {Button} from '../../styles/shared/Button';
+import {useDispatch, useSelector} from 'react-redux';
+import {getTotalPrice} from '../../state/cartSlice';
 
 const Cart = () => {
+  // const total = useSelector(getTotalPrice);
+  const dispatch = useDispatch();
   return (
     <CartContainer>
       <ItemsContainer>
@@ -17,12 +27,11 @@ const Cart = () => {
           <hr />
           <div>
             <p>Items 3</p>
-            <p>Items $500.00USD</p>
           </div>
           <hr />
           <div>
             <p>Total Cost</p>
-            <p>Items $550.00USD</p>
+            <p>$550.00USD</p>
           </div>
           <Button>Checkout</Button>
         </CheckoutCard>

@@ -1,46 +1,32 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   GridContainer,
   ProductsContainer,
-  TagsContainer,
 } from './Products.styles';
 import Card from '../../components/card';
-import Checkbox from '../../components/checkbox';
-import useProducts from '../../hooks/useProducts';
+import {useDispatch, useSelector} from 'react-redux';
+import {getData} from '../../utils/api';
+import {receivedProducts} from '../../state/productsSlice';
 
 const Products = () => {
-  const {products, loading, categories} = useProducts();
-  console.log(categories);
+  // getting ready to use our useAppDispatch hook;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // The response we get from getProducts promise will then be sent to our reducer via dispatch.
+    getData().then((products) => {
+      dispatch(receivedProducts(products.data.products.items));
+    });
+  }, [dispatch]);
+  const products = useSelector((state) => state.products.products);
   return (
     <ProductsContainer>
-      <div>
-        <TagsContainer>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <>
-              <h2>Categories</h2>
-              {categories.map((category)=>(
-                <Checkbox key={category.id} label={category.name} />
-              ))}            
-            </>
-          )}
-        </TagsContainer>
-      </div>
       <GridContainer>
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          products.map((product) => (
-            <Card
-              key={product.id}
-              productName={product.name}
-              price={product.price}
-              department={product.categories[0]}
-              image={product.images[0]}
-            />
-          ))
-        )}
+        {products&&products.map((product) => (
+          <Card
+            key={product.id}
+            product={product}
+          />
+        ))}
       </GridContainer>
     </ProductsContainer>
   );
