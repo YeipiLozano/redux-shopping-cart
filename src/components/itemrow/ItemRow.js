@@ -6,7 +6,7 @@ import {
   SpacedTd,
 } from './ItemRow.styles';
 import {Text} from '../../styles/shared/Text';
-import {updateQuantity} from '../../state/cartSlice';
+import {updateQuantity, removeFromCart} from '../../state/cartSlice';
 
 import React from 'react';
 import {Image} from '../../styles/shared/Image';
@@ -36,12 +36,13 @@ const ItemRow = ({product, quantity}) => {
               dispatch(updateQuantity({id, quantity: parseInt(e.target.value)}))
             }
             type='number'
+            min={0}
           />
-          <button>Remove</button>
+          <button onClick={() => dispatch(removeFromCart(id))}>Remove</button>
         </QuantityContainer>
       </SpacedTd>
       <SpacedTd>${price}</SpacedTd>
-      <SpacedTd>${(price * quantity).toFixed(2) }</SpacedTd>
+      <SpacedTd>${(price * quantity).toFixed(2)}</SpacedTd>
     </tr>
   );
 };
