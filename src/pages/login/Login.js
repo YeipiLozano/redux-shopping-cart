@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button} from '../../styles/shared/Button';
 import loginApi from '../../utils/api';
+import {useDispatch} from 'react-redux';
 import {
   InputDiv,
   LoginContainer,
@@ -10,14 +11,16 @@ import {
   GoogleImageDiv,
   GoogleImage,
 } from './Login.styles';
+import { setUser } from '../../state/userSlice';
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [values, setValues] = useState({username: '', password: ''});
   const {username, password} = values;
   const handleLogin = () => {
     loginApi(username, password)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
+        dispatch(setUser({username, password}));
       })
       .catch((error) => {
         console.log(error);

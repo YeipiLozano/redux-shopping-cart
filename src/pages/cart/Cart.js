@@ -16,6 +16,8 @@ const Cart = () => {
   const totalPrice = useSelector(getTotalPrice);
   return (
     <CartContainer>
+    {quantities > 0 ? (
+      <>
       <ItemsContainer>
         <h3>Shopping Cart</h3>
         <hr />
@@ -36,6 +38,10 @@ const Cart = () => {
           <Button>Checkout</Button>
         </CheckoutCard>
       </CheckoutContainer>
+      </>
+    ) : (
+      <h4>There's no items in your cart :(</h4>
+    )}
     </CartContainer>
   );
 };
