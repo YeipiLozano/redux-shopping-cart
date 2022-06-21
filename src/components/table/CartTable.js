@@ -1,10 +1,8 @@
 import React from 'react';
 import ItemRow from '../itemrow/';
-import {useDispatch, useSelector} from 'react-redux';
-import {getTotalPrice, updateQuantity} from '../../state/cartSlice';
+import {useSelector} from 'react-redux';
 
 const CartTable = () => {
-  const products = useSelector((state) => state.products.products);
   const items = useSelector((state) => state.cart.items);
   return (
     <table>
@@ -18,7 +16,6 @@ const CartTable = () => {
       </thead>
       <tbody>
         {items.map((data) => {
-          console.log(data);
           return (
             <ItemRow
               key={data.product.id}

@@ -40,8 +40,9 @@ const cartSlice = createSlice({
     },
     updateQuantity(state, action) {
       const {id, quantity} = action.payload;
-      const item = state.items.find((item) => item.id === id);
-      item.quantity = quantity;
+      if (state.items.find((item) => item.product.id === id)) {
+        state.items.find((item) => item.product.id === id).quantity = quantity;
+      }
     },
   },
 });
@@ -52,8 +53,8 @@ export default cartSlice.reducer;
 // vvvvv THIS IS A SELECTOR. Created to 'select' info from the state
 export function getNumItems(state) {
   let numItems = 0;
-  for (let id in state.cart.items) {
-    numItems += state.cart.items[id];
+  for (let items of state.cart.items) {
+    numItems += items.quantity;
   }
   return numItems;
 }
@@ -64,8 +65,8 @@ export const createMemoizedGetNumItems = createSelector(
   (state) => state.cart.items,
   (items) => {
     let numItems = 0;
-    for (let id in items) {
-      numItems += items[id];
+    for (let item of items) {
+      numItems += item.quantity;
     }
     return numItems;
   }
@@ -73,12 +74,13 @@ export const createMemoizedGetNumItems = createSelector(
 
 export const getTotalPrice = createSelector(
   (state) => state.cart.items,
-  (state) => state.products.products,
-  (items, products) => {
+  (items) => {
     let total = 0;
-    for (let id in items) {
-      total += products[id].price + items[id];
+    for (let product of items) {
+      console.log(product);
+      total += product.quantity * product.product.price;
     }
+    // return 50;
     return total.toFixed(2);
   }
 );

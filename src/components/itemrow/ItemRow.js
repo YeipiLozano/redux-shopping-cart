@@ -6,12 +6,15 @@ import {
   SpacedTd,
 } from './ItemRow.styles';
 import {Text} from '../../styles/shared/Text';
+import {updateQuantity} from '../../state/cartSlice';
 
 import React from 'react';
 import {Image} from '../../styles/shared/Image';
+import {useDispatch} from 'react-redux';
 
 const ItemRow = ({product, quantity}) => {
-  const {name, price, categories, images, id} = product;
+  const dispatch = useDispatch();
+  const {name, price, images, id} = product;
   return (
     <tr>
       <SpacedTd>
@@ -27,12 +30,18 @@ const ItemRow = ({product, quantity}) => {
       </SpacedTd>
       <SpacedTd>
         <QuantityContainer>
-          <input defaultValue={quantity} type='number' />
+          <input
+            defaultValue={quantity}
+            onChange={(e) =>
+              dispatch(updateQuantity({id, quantity: parseInt(e.target.value)}))
+            }
+            type='number'
+          />
           <button>Remove</button>
         </QuantityContainer>
       </SpacedTd>
       <SpacedTd>${price}</SpacedTd>
-      <SpacedTd>${price * quantity}</SpacedTd>
+      <SpacedTd>${(price * quantity).toFixed(2) }</SpacedTd>
     </tr>
   );
 };

@@ -13,7 +13,7 @@ import {
 import {Image} from '../../styles/shared/Image';
 
 const Card = ({product}) => {
-  const {id, name, price, categories, images} = product;
+  const {name, price, categories, images} = product;
   const dispatch = useDispatch();
   return (
     <CardContainer>

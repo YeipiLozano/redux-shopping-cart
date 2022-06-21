@@ -8,12 +8,12 @@ import {
   CheckoutTitle,
 } from './Cart.styles';
 import {Button} from '../../styles/shared/Button';
-import {useDispatch, useSelector} from 'react-redux';
-import {getTotalPrice} from '../../state/cartSlice';
+import {useSelector} from 'react-redux';
+import {getTotalPrice, createMemoizedGetNumItems} from '../../state/cartSlice';
 
 const Cart = () => {
-  // const total = useSelector(getTotalPrice);
-  const dispatch = useDispatch();
+  const quantities = useSelector(createMemoizedGetNumItems);
+  const totalPrice = useSelector(getTotalPrice);
   return (
     <CartContainer>
       <ItemsContainer>
@@ -26,12 +26,12 @@ const Cart = () => {
           <CheckoutTitle>Summary</CheckoutTitle>
           <hr />
           <div>
-            <p>Items 3</p>
+            <p>Items {quantities ? quantities : 0}</p>
           </div>
           <hr />
           <div>
             <p>Total Cost</p>
-            <p>$550.00USD</p>
+            <p>${totalPrice ? totalPrice : 0}</p>
           </div>
           <Button>Checkout</Button>
         </CheckoutCard>
