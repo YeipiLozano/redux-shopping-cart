@@ -1,35 +1,47 @@
 import {
   DetailsContainer,
   DetailsTextContainer,
+  ImgDiv,
   QuantityContainer,
   SpacedTd,
 } from './ItemRow.styles';
 import {Text} from '../../styles/shared/Text';
+import {updateQuantity} from '../../state/cartSlice';
 
 import React from 'react';
+import {Image} from '../../styles/shared/Image';
+import {useDispatch} from 'react-redux';
 
-const ItemRow = () => {
+const ItemRow = ({product, quantity}) => {
+  const dispatch = useDispatch();
+  const {name, price, images, id} = product;
   return (
     <tr>
       <SpacedTd>
         <DetailsContainer>
-          <img src='https://via.placeholder.com/150x150' alt='Producto' />
+          <ImgDiv>
+            <Image src={images[0]} alt='Producto' />
+          </ImgDiv>
           <DetailsTextContainer>
-            <Text>Hemmed Light Jumper</Text>
-            <Text>Color: Navy</Text>
-            <Text>Size XS</Text>
-            <Text>Product code 111000</Text>
+            <Text>{name}</Text>
+            <Text>Product code: {id}</Text>
           </DetailsTextContainer>
         </DetailsContainer>
       </SpacedTd>
       <SpacedTd>
         <QuantityContainer>
-          <input defaultValue='2' type='number' />
+          <input
+            defaultValue={quantity}
+            onChange={(e) =>
+              dispatch(updateQuantity({id, quantity: parseInt(e.target.value)}))
+            }
+            type='number'
+          />
           <button>Remove</button>
         </QuantityContainer>
       </SpacedTd>
-      <SpacedTd>$35.00</SpacedTd>
-      <SpacedTd>$70.00</SpacedTd>
+      <SpacedTd>${price}</SpacedTd>
+      <SpacedTd>${(price * quantity).toFixed(2) }</SpacedTd>
     </tr>
   );
 };

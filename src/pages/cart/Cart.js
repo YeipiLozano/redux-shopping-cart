@@ -1,9 +1,19 @@
 import React from 'react';
 import CartTable from '../../components/table/';
-import { CartContainer, CheckoutCard, CheckoutContainer, ItemsContainer, CheckoutTitle } from './Cart.styles';
-import { Button } from '../../styles/shared/Button';
+import {
+  CartContainer,
+  CheckoutCard,
+  CheckoutContainer,
+  ItemsContainer,
+  CheckoutTitle,
+} from './Cart.styles';
+import {Button} from '../../styles/shared/Button';
+import {useSelector} from 'react-redux';
+import {getTotalPrice, createMemoizedGetNumItems} from '../../state/cartSlice';
 
 const Cart = () => {
+  const quantities = useSelector(createMemoizedGetNumItems);
+  const totalPrice = useSelector(getTotalPrice);
   return (
     <CartContainer>
       <ItemsContainer>
@@ -16,13 +26,12 @@ const Cart = () => {
           <CheckoutTitle>Summary</CheckoutTitle>
           <hr />
           <div>
-            <p>Items 3</p>
-            <p>Items $500.00USD</p>
+            <p>Items {quantities ? quantities : 0}</p>
           </div>
           <hr />
           <div>
             <p>Total Cost</p>
-            <p>Items $550.00USD</p>
+            <p>${totalPrice ? totalPrice : 0}</p>
           </div>
           <Button>Checkout</Button>
         </CheckoutCard>
