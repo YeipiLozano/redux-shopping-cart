@@ -3,7 +3,7 @@ import {Container} from '../../styles/shared/Container';
 
 export const LoginContainer = styled(Container)`
   margin-top: 128px;
-  height: 400px;
+  height: 450px;
   width: 600px;
   flex-direction: column;
   align-items: center;
@@ -35,7 +35,8 @@ export const LoginHR = styled.hr`
 export const GoogleSignIn = styled.button`
   padding: 8px;
   display: flex;
-  font-size:16px
+  font-size: 16px;
+  margin-bottom: 32px;
 `;
 
 export const GoogleImage = styled.img`
